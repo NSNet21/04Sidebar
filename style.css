@@ -1,0 +1,259 @@
+:root {
+  --text: #eff5f4;
+  --background: #050a0a;
+  --primary: #83e2d1;
+  --secondary: #10987d;
+  --secondary-overlay: rgba(20, 180, 148, 0.7);
+  --accent: #24ffd3;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 80%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--text);
+  color: var(--text);
+}
+
+/* navbar parent style section */
+
+.side-navbar {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 100vh;
+  background-color: var(--background);
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: width 0.3s ease; /* animate เฉพาะ width */
+}
+
+.side-navbar.collapsed {
+  width: 68px;
+  align-items: center;
+}
+
+.side-navbar div.logo {
+  transition: width 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.side-navbar.collapsed div.logo {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+/* text animation */
+.navbar-menu li .text,
+.navbar-footer li .text {
+  opacity: 1;
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, max-width 0.3s ease;
+}
+
+.side-navbar.collapsed .text {
+  opacity: 0;
+  max-width: 0;
+  pointer-events: none;
+}
+
+.side-navbar li {
+  justify-content: flex-start;
+  transition: justify-content 0.3s ease;
+}
+
+.side-navbar.collapsed .navbar-logo {
+  padding: 8px 10px;
+}
+
+.side-navbar.collapsed .navbar-logo #bxIcon {
+  padding: 7px 13px;
+}
+
+.side-navbar .text {
+  transform: translateX(0);
+  transition: opacity 0.3s ease, max-width 0.3s ease, transform 0.3s ease;
+}
+
+.side-navbar.collapsed .text {
+  opacity: 0;
+  max-width: 0;
+
+}
+
+/* navbar logo manipulation section */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: default;
+  padding: 8px 15px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* navbar hamburger menu manipulation section */
+
+.navbar-logo #bxIcon {
+  display: inline-block;
+  padding: 7px 9px;
+  font-size: 1.35rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo #bxIcon:hover {
+  color: var(--background);
+  background-color: var(--accent);
+  box-shadow: 0 0 45px var(--secondary);
+}
+
+.navbar-logo h2.logo {
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+  text-wrap: nowrap;
+}
+
+.navbar-logo h2.logo:hover {
+  color: var(--accent);
+  text-shadow: 0 0 35px var(--secondary);
+}
+
+/* navbar menu manipulation section */
+
+.navbar-menu {
+  padding: 2px 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.navbar-menu li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-weight: 400;
+  line-height: 1; /* ให้ text ไม่กินพื้นที่เกินจริง */
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.navbar-menu li.active {
+  cursor: default;
+}
+
+.navbar-menu li:hover:not(.active) {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.navbar-menu li span.icon {
+  font-size: 1.35rem; /* ปรับให้สูงเท่ากับ text */
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-size: 1.25rem;
+}
+
+.navbar-menu li span.text {
+  line-height: 1; /* ให้กลางพอดี */
+  transform: translateY(1px); /* ปรับ offset นิดหน่อยให้ balance */
+  display: inline-block;
+  font-size: 15px;
+}
+
+.navbar-menu li.active span {
+  color: var(--accent);
+}
+
+/* navbar footer manipulation section */
+
+.navbar-footer {
+  margin-top: auto;
+  padding: 2px 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.navbar-footer li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-weight: 400;
+  line-height: 1; /* ให้ text ไม่กินพื้นที่เกินจริง */
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.navbar-footer li.active {
+  cursor: default;
+}
+
+.navbar-footer li:hover:not(.active) {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.navbar-footer li span.icon {
+  font-size: 1.35rem; /* ปรับให้สูงเท่ากับ text */
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-size: 1.25rem;
+}
+
+.navbar-footer li span.text {
+  line-height: 1; /* ให้กลางพอดี */
+  transform: translateY(1px); /* ปรับ offset นิดหน่อยให้ balance */
+  display: inline-block;
+  font-size: 15px;
+}
+
+.navbar-footer li.active span {
+  color: var(--accent);
+}
+
+.navbar-footer li span > i.bx-arrow-out-up-square-half {
+  transform: rotate(90deg);
+}
+
+span.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
